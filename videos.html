@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidéos - Mon Réseau Social</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="create.html">Messages</a></li>
+                <li><a href="posts.html">Posts</a></li>
+                <li><a href="videos.html">Vite</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="video-section">
+            <h1>Vidéos</h1>
+            <input type="text" id="search" placeholder="Rechercher des vidéos...">
+            <div class="video-list">
+                <!-- Ajoutez ici les vidéos dynamiquement -->
+                <div class="video-item">
+                    <video controls>
+                        <source src="video1.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                    <p>Description de la vidéo 1</p>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="video2.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                    <p>Description de la vidéo 2</p>
+                </div>
+                <!-- Ajoutez plus de vidéos ici -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mon Réseau Social. Tous droits réservés.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Vidéos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .video-container {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .video-form {
+            margin-bottom: 20px;
+        }
+        .video-form input, .video-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .video-form button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .video-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Page de Vidéos</h1>
+
+    <div class="video-form">
+        <h2>Enregistrer une Vidéo</h2>
+        <form id="videoForm">
+            <input type="text" id="title" placeholder="Titre de la vidéo" required>
+            <textarea id="description" placeholder="Description de la vidéo" required></textarea>
+            <input type="file" id="thumbnail" accept="image/*" required>
+            <input type="file" id="video" accept="video/*" required>
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+
+    <div id="videoList"></div>
+
+    <script>
+        document.getElementById('videoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const thumbnail = document.getElementById('thumbnail').files[0];
+            const video = document.getElementById('video').files[0];
+
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+
+            const videoTitle = document.createElement('h3');
+            videoTitle.textContent = title;
+            videoContainer.appendChild(videoTitle);
+
+            const videoDescription = document.createElement('p');
+            videoDescription.textContent = description;
+            videoContainer.appendChild(videoDescription);
+
+            const videoThumbnail = document.createElement('img');
+            videoThumbnail.src = URL.createObjectURL(thumbnail);
+            videoThumbnail.alt = title;
+            videoContainer.appendChild(videoThumbnail);
+
+            const videoElement = document.createElement('video');
+            videoElement.controls = true;
+            videoElement.src = URL.createObjectURL(video);
+            videoContainer.appendChild(videoElement);
+
+            document.getElementById('videoList').appendChild(videoContainer);
+
+            // Réinitialiser le formulaire
+            document.getElementById('videoForm').reset();
+        });
+    </script>
+    <input type="file" id="uploadVideo" accept="video/*">
+    <div id="videoContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
